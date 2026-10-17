@@ -1,0 +1,21 @@
+name: jellyfin-playlist-itemids
+
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:12.2
+    ports:
+      - "127.0.0.1:18800:8096"
+    volumes:
+      - jellyfin-config:/config
+      - jellyfin-cache:/cache
+      - ./media/private-a:/media/private-a:ro
+      - ./media/public-b:/media/public-b:ro
+    environment:
+      TZ: UTC
+    labels:
+      lab: JELLYFIN-PLAYLIST-ITEMIDS
+    restart: "no"
+
+volumes:
+  jellyfin-config:
+  jellyfin-cache:
